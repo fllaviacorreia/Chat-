@@ -11,9 +11,6 @@ import java.util.Scanner;
 
 public class Cliente {
 	TelaConversa telaConversa = new  TelaConversa();
-
-
-	
 	public Cliente(){
 		System.out.println("No cliente");
 		try {

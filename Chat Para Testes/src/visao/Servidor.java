@@ -8,7 +8,7 @@ import controle.ControleServidor;
 
 public class Servidor {
 
-	public static void main(String[] args) {
+	public Servidor() {
 		ServerSocket servidor = null;
 		try{
 			servidor = new ServerSocket(5001);

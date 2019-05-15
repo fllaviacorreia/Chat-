@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import visao.Cliente;
 import visao.Frame;
 import visao.Servidor;
 import visao.TelaConversa;
@@ -66,6 +67,7 @@ public class ControleTelaInicial implements MouseListener{
 	public static void main(String[] args) {
 		new ControleTelaInicial();
 		new Servidor();
+		new Cliente();
 	}
 	
 }
