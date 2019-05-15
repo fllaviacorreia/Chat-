@@ -12,6 +12,7 @@ public class ControleServidor extends Thread{
 	
 	public ControleServidor(Socket cliente) {
 		this.cliente = cliente;
+		start();
 	}
 	
 	@Override

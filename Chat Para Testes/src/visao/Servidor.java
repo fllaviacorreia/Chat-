@@ -8,15 +8,15 @@ import controle.ControleServidor;
 
 public class Servidor {
 
-	public Servidor() {
+	public static void main(String[] args) {
 		ServerSocket servidor = null;
 		try{
 			servidor = new ServerSocket(5001);
 			System.out.println("[I] - Servidor iniciado na porta 5001");
 			while(true) {
 				Socket cliente = servidor.accept();
-//				ControleServidor controleServidor = new ControleServidor(cliente);
-//				controleServidor.start();
+				ControleServidor controleServidor = new ControleServidor(cliente);
+				controleServidor.start();
 			}
 		} catch (IOException e) {
 			System.err.println("Porta ocupda ou servidor fechado  " + e.getMessage());
@@ -31,4 +31,6 @@ public class Servidor {
 		}
 		
 	}
+	
+		
 }
