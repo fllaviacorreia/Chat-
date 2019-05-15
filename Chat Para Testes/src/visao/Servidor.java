@@ -16,7 +16,7 @@ public class Servidor {
 			while(true) {
 				Socket cliente = servidor.accept();
 				ControleServidor controleServidor = new ControleServidor(cliente);
-				controleServidor.start();
+				
 			}
 		} catch (IOException e) {
 			System.err.println("Porta ocupda ou servidor fechado  " + e.getMessage());
