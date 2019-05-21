@@ -14,8 +14,8 @@ public class Servidor {
 			servidor = new ServerSocket(5001);
 			System.out.println("[I] - Servidor iniciado na porta 5001");
 			while(true) {
-				Socket cliente = servidor.accept();
-				ControleServidor controleServidor = new ControleServidor(cliente);
+				Socket cliente = servidor.accept(); // o accept é o que espera alguém se conectar
+				new ControleServidor(cliente);
 				
 			}
 		} catch (IOException e) {
