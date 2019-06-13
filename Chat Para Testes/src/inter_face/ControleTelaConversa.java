@@ -1,16 +1,16 @@
-package controle;
+package inter_face;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.net.InetAddress;
 import java.sql.Date;
 import java.util.Calendar;
 
-import visao.Cliente;
-import visao.Frame;
-import visao.TelaConversa;
-import visao.TelaInicial;
+import servidor.BroadcastingClient;
+import servidor.IPBroadcast;
 
 public class ControleTelaConversa implements KeyListener{
 	static TelaConversa telaConversa;
@@ -47,9 +47,14 @@ public class ControleTelaConversa implements KeyListener{
 					}
 					
 					String msgEscrita = telaConversa.getTextAreaMensagemEscrita().getText().toString();
-					new Cliente();
+					try {
+						BroadcastingClient.broadcast(msgEscrita, InetAddress.getByName(BroadcastingClient.getIPBroadcast().IP().toString().substring(1, 
+								(BroadcastingClient.getIPBroadcast().IP().toString()).length())));
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 					telaConversa.getTextAreaMensagemEnviada().append(msgEscrita + "\t \t" + horas + ":" 
-							+ minutos + ":" + segundos + "\n");
+							+ minutos + "\n");
 					if (!telaConversa.getTextAreaMensagemEnviada().getText().isEmpty() && !telaConversa.getTextAreaMensagemEnviada().isFocusOwner()) {
 						telaConversa.getTextAreaMensagemEnviada().setCaretPosition(telaConversa.getTextAreaMensagemEnviada().getText().length() - 1);
 		            }
@@ -84,12 +89,12 @@ public class ControleTelaConversa implements KeyListener{
 		}
 	};
 	public ControleTelaConversa(Frame frame, TelaConversa telaConversa) {
-		this.frame = frame;
-		this.telaConversa = telaConversa;	
-		frame.trocarPainel(this.telaConversa, "Conversa");
-		this.telaConversa.getLabelEnviar().addMouseListener(mouseListener);
-		this.telaConversa.getTextAreaMensagemEscrita().addKeyListener(this);
-		this.telaConversa.getLabelVoltar().addMouseListener(mouseListener);
+		ControleTelaConversa.frame = frame;
+		ControleTelaConversa.telaConversa = telaConversa;	
+		ControleTelaConversa.frame.trocarPainel(ControleTelaConversa.telaConversa, "Conversa");
+		ControleTelaConversa.telaConversa.getLabelEnviar().addMouseListener(mouseListener);
+		ControleTelaConversa.telaConversa.getTextAreaMensagemEscrita().addKeyListener(this);
+		ControleTelaConversa.telaConversa.getLabelVoltar().addMouseListener(mouseListener);
 		System.out.println("No Controlador da Tela de Conversa");
 	}
 	@Override
@@ -109,13 +114,19 @@ public class ControleTelaConversa implements KeyListener{
 				}
 				
 				String msgEscrita = telaConversa.getTextAreaMensagemEscrita().getText().toString();
-				new Cliente();
+				try {
+					BroadcastingClient.broadcast(msgEscrita, InetAddress.getByName(BroadcastingClient.getIPBroadcast().IP().toString().substring(1, 
+							(BroadcastingClient.getIPBroadcast().IP().toString()).length())));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				telaConversa.getTextAreaMensagemEnviada().append(msgEscrita + "\t             " 
-				+ horas + ":" + minutos + ":" + segundos + "\n");
+				+ horas + ":" + minutos + "\n");
 				if (!telaConversa.getTextAreaMensagemEnviada().getText().isEmpty() && !telaConversa.getTextAreaMensagemEnviada().isFocusOwner()) {
 					telaConversa.getTextAreaMensagemEnviada().setCaretPosition(telaConversa.getTextAreaMensagemEnviada().getText().length() - 1);
 	            }
-				telaConversa.getTextAreaMensagemEscrita().setText("");
+				telaConversa.getTextAreaMensagemEscrita().setText(null);
 				telaConversa.getTextAreaMensagemEscrita().requestFocus();
 
 			}

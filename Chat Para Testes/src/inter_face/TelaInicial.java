@@ -1,4 +1,4 @@
-package visao;
+package inter_face;
 
 import javax.swing.JPanel;
 import java.awt.Color;

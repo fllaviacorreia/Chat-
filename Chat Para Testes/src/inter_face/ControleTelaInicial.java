@@ -1,16 +1,10 @@
-package controle;
+package inter_face;
 
 
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-import visao.Cliente;
-import visao.Frame;
-import visao.Servidor;
-import visao.TelaConversa;
-import visao.TelaInicial;
 
 public class ControleTelaInicial implements MouseListener{
 	static TelaInicial telaInicial = new TelaInicial();
@@ -64,10 +58,12 @@ public class ControleTelaInicial implements MouseListener{
 		
 	}
 
-	public static void main(String[] args) {
-		new ControleTelaInicial();
-		new Servidor();
-		new Cliente();
-	}
+//	public static void main(String[] args) {
+	//	new ControleTelaInicial();
+	//	new Servidor();
+	//	new Cliente();
+	//	new MulticastPublisher();
+	//	new MulticastReceiver();
+//	}
 	
 }
