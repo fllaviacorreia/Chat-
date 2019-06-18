@@ -9,8 +9,8 @@ import java.net.ServerSocket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
+import inter_face.ControleTelaConversa;
 import inter_face.ControleTelaInicial;
-import inter_face.TelaConversa;
 
 //import controle.ControleServidor;
 
@@ -21,7 +21,7 @@ public class Servidor {
 	private static DatagramSocket datagramSocket;
 	private static ArrayList<PrintStream> clientes;
 	private static byte[] Byte;
-	static TelaConversa tela = new TelaConversa();
+	static ControleTelaConversa telaConversa = new ControleTelaConversa();
 	public Servidor() {
 //		ServerSocket servidor = null;
 //		try{
@@ -54,7 +54,7 @@ public class Servidor {
 				DatagramPacket packet = new DatagramPacket(by, by.length);
 				datagramSocket.receive(packet);
 				datagramSocket.send(packet);
-				tela.getTextAreaMensagemEnviada().append(new String(by));
+				telaConversa.escreveMsg(new String(by));
 			}
 		} catch (IOException e) {
 			System.err.println("Porta em uso "+e.getMessage());

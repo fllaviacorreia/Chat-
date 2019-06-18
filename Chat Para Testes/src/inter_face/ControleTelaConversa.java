@@ -42,24 +42,18 @@ public class ControleTelaConversa implements KeyListener{
 				    ano = data.get(Calendar.YEAR);
 				    
 					if(telaConversa.getTextAreaMensagemEnviada().getText().isEmpty()) {
-						telaConversa.getTextAreaMensagemEnviada().setText("\t             " + dia + "/"
+						telaConversa.getTextAreaMensagemEnviada().setText("\t   " + dia + "/"
 							+ mes + "/"+ ano + "\n");
 					}
-					
-					String msgEscrita = telaConversa.getTextAreaMensagemEscrita().getText().toString();
 					try {
-						BroadcastingClient.broadcast(msgEscrita, InetAddress.getByName(BroadcastingClient.getIPBroadcast().IP().toString().substring(1, 
+						BroadcastingClient.broadcast(telaConversa.getTextAreaMensagemEscrita().getText().toString(), 
+								InetAddress.getByName(BroadcastingClient.getIPBroadcast().IP().toString().substring(1, 
 								(BroadcastingClient.getIPBroadcast().IP().toString()).length())));
 					} catch (IOException e1) {
+						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					telaConversa.getTextAreaMensagemEnviada().append(msgEscrita + "\t \t" + horas + ":" 
-							+ minutos + "\n");
-					if (!telaConversa.getTextAreaMensagemEnviada().getText().isEmpty() && !telaConversa.getTextAreaMensagemEnviada().isFocusOwner()) {
-						telaConversa.getTextAreaMensagemEnviada().setCaretPosition(telaConversa.getTextAreaMensagemEnviada().getText().length() - 1);
-		            }
-					telaConversa.getTextAreaMensagemEscrita().setText("");
-					telaConversa.getTextAreaMensagemEscrita().requestFocus();
+					escreveMsg(telaConversa.getTextAreaMensagemEscrita().getText().toString());
 				}
 			}
 			if(e.getSource() == (telaConversa.getLabelVoltar())) {
@@ -97,6 +91,9 @@ public class ControleTelaConversa implements KeyListener{
 		ControleTelaConversa.telaConversa.getLabelVoltar().addMouseListener(mouseListener);
 		System.out.println("No Controlador da Tela de Conversa");
 	}
+	public ControleTelaConversa() {
+		
+	}
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -112,23 +109,16 @@ public class ControleTelaConversa implements KeyListener{
 					telaConversa.getTextAreaMensagemEnviada().setText("\t   " + dia + "/"
 						+ mes + "/"+ ano + "\n");
 				}
-				
-				String msgEscrita = telaConversa.getTextAreaMensagemEscrita().getText().toString();
 				try {
-					BroadcastingClient.broadcast(msgEscrita, InetAddress.getByName(BroadcastingClient.getIPBroadcast().IP().toString().substring(1, 
+					BroadcastingClient.broadcast(telaConversa.getTextAreaMensagemEscrita().getText().toString(), 
+							InetAddress.getByName(BroadcastingClient.getIPBroadcast().IP().toString().substring(1, 
 							(BroadcastingClient.getIPBroadcast().IP().toString()).length())));
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				telaConversa.getTextAreaMensagemEnviada().append(msgEscrita + "\t             " 
-				+ horas + ":" + minutos + "\n");
-				if (!telaConversa.getTextAreaMensagemEnviada().getText().isEmpty() && !telaConversa.getTextAreaMensagemEnviada().isFocusOwner()) {
-					telaConversa.getTextAreaMensagemEnviada().setCaretPosition(telaConversa.getTextAreaMensagemEnviada().getText().length() - 1);
-	            }
-				telaConversa.getTextAreaMensagemEscrita().setText(null);
-				telaConversa.getTextAreaMensagemEscrita().requestFocus();
-
+				
+				escreveMsg(telaConversa.getTextAreaMensagemEscrita().getText().toString());
 			}
 		}
 		
@@ -144,6 +134,17 @@ public class ControleTelaConversa implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void escreveMsg(String mensagem) {
+		System.out.println("no método de conversa");
+		telaConversa.getTextAreaMensagemEnviada().append(mensagem + "\t             " 
+				+ horas + ":" + minutos + "\n");
+				if (!telaConversa.getTextAreaMensagemEnviada().getText().isEmpty() && !telaConversa.getTextAreaMensagemEnviada().isFocusOwner()) {
+					telaConversa.getTextAreaMensagemEnviada().setCaretPosition(telaConversa.getTextAreaMensagemEnviada().getText().length() - 1);
+	            }
+				telaConversa.getTextAreaMensagemEscrita().setText(null);
+				telaConversa.getTextAreaMensagemEscrita().requestFocus();
 	}
 
 }
