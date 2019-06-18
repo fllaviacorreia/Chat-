@@ -16,10 +16,11 @@ public class BroadcastingClient {
 			public void run() {
 				while(true) {
 					try {
-						broadcast("Flávia", InetAddress.getByName(getIPBroadcast().IP().toString().substring(1, (getIPBroadcast().IP().toString()).length())));
+						broadcast("Fernanda", InetAddress.getByName(getIPBroadcast().IP().toString().substring(1, (getIPBroadcast().IP().toString()).length())));
 						Thread.sleep(5000);
 						System.out.println("indo");
-						System.out.println("ip Flávia = "+ InetAddress.getByName(getIPBroadcast().IP().toString().substring(1, (getIPBroadcast().IP().toString()).length())));
+						System.out.println("ip Fernanda = "+InetAddress.getByName(getIPBroadcast().IP().toString().substring(1, (getIPBroadcast().IP().toString()).length())));
+
 					} catch (IOException e) {
 						
 						e.printStackTrace();
