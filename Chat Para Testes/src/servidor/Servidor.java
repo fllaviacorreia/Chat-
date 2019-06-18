@@ -56,7 +56,7 @@ public class Servidor {
 				BroadcastingClient.broadcast(packet.toString(), packet.getAddress());
 				datagramSocket.send(packet);
 				System.out.println("MSG = "+new String(by));
-				System.out.println("pcket.toString() = " packet.toString());
+				System.out.println("pcket.toString() = " + packet.toString());
 //				static ControleTelaConversa telaConversa = ;
 //				telaConversa.escreveMsg(new String(by));
 			}
