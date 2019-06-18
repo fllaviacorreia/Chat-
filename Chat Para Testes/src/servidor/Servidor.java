@@ -10,6 +10,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import inter_face.ControleTelaInicial;
+import inter_face.TelaConversa;
 
 //import controle.ControleServidor;
 
@@ -20,7 +21,7 @@ public class Servidor {
 	private static DatagramSocket datagramSocket;
 	private static ArrayList<PrintStream> clientes;
 	private static byte[] Byte;
-
+	static TelaConversa tela = new TelaConversa();
 	public Servidor() {
 //		ServerSocket servidor = null;
 //		try{
@@ -51,8 +52,10 @@ public class Servidor {
 				byte[] by = new byte[255];
 
 				DatagramPacket packet = new DatagramPacket(by, by.length);
-
 				datagramSocket.receive(packet);
+				datagramSocket.send(packet);
+				tela.getTextAreaMensagemEnviada().append(new String(by, 0, by.length));
+            
 				System.out.println("foi " + by.length);
 				System.out.println(new String(by, 0, by.length));
 				System.out.println(by);
@@ -64,6 +67,7 @@ public class Servidor {
 		}
 		
 		new ControleTelaInicial();
+		new BroadcastingClient();
 	}
 
 	public static IPBroadcast getIPBroadcast() {

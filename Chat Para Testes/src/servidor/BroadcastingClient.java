@@ -12,12 +12,23 @@ public class BroadcastingClient {
 	private static DatagramSocket socket = null;	
 	
 	public BroadcastingClient() {
-		try {
-			broadcast("Flávia", InetAddress.getByName(getIPBroadcast().IP().toString().substring(1, (getIPBroadcast().IP().toString()).length())));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		new Thread() {
+			public void run() {
+				while(true) {
+					try {
+						broadcast("Flávia", InetAddress.getByName(getIPBroadcast().IP().toString().substring(1, (getIPBroadcast().IP().toString()).length())));
+						Thread.sleep(5000);
+						System.out.println("indo");
+					} catch (IOException e) {
+						
+						e.printStackTrace();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}.start();
+		
 	}
 
 	public static void broadcast(String broadcastMessage, InetAddress address) throws IOException {
