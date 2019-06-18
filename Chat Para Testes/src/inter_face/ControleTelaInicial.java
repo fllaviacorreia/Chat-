@@ -57,13 +57,5 @@ public class ControleTelaInicial implements MouseListener{
 		// TODO Auto-generated method stub
 		
 	}
-
-//	public static void main(String[] args) {
-	//	new ControleTelaInicial();
-	//	new Servidor();
-	//	new Cliente();
-	//	new MulticastPublisher();
-	//	new MulticastReceiver();
-//	}
 	
 }

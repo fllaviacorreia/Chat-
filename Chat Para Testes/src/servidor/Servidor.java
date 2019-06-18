@@ -54,12 +54,7 @@ public class Servidor {
 				DatagramPacket packet = new DatagramPacket(by, by.length);
 				datagramSocket.receive(packet);
 				datagramSocket.send(packet);
-				tela.getTextAreaMensagemEnviada().append(new String(by, 0, by.length));
-            
-				System.out.println("foi " + by.length);
-				System.out.println(new String(by, 0, by.length));
-				System.out.println(by);
-
+				tela.getTextAreaMensagemEnviada().append(new String(by));
 			}
 		} catch (IOException e) {
 			System.err.println("Porta em uso "+e.getMessage());
