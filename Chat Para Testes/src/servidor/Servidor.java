@@ -46,24 +46,13 @@ public class Servidor {
 	public static void main(String[] args) {
 
 		try {
-			setByte(InetAddress.getByName("localhost").getAddress());
-		} catch (UnknownHostException e1) {
-			e1.printStackTrace();
-		}
-
-		setClientes(new ArrayList<>());
-
-		try {
-			datagramSocket = new DatagramSocket(8000);
-
+			datagramSocket = new DatagramSocket(5000);
 			while (true) {
 				byte[] by = new byte[255];
 
 				DatagramPacket packet = new DatagramPacket(by, by.length);
 
 				datagramSocket.receive(packet);
-				
-				System.out.println(packet.getAddress());
 				System.out.println("foi " + by.length);
 				System.out.println(new String(by, 0, by.length));
 				System.out.println(by);

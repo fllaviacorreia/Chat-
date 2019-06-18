@@ -10,7 +10,6 @@ import java.util.List;
 
 //w w  w .  j  ava  2 s .  c  o  m
 public class IPBroadcast {
-
 	private InetAddress broadcast;
 	private int cont = 0;
 
@@ -35,7 +34,6 @@ public class IPBroadcast {
 			}
 
 		}
-
 		return broadcast;
 
 	}
