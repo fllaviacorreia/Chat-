@@ -21,7 +21,7 @@ public class Servidor {
 	private static DatagramSocket datagramSocket;
 	private static ArrayList<PrintStream> clientes;
 	private static byte[] Byte;
-	static ControleTelaConversa telaConversa = new ControleTelaConversa();
+	
 	public Servidor() {
 //		ServerSocket servidor = null;
 //		try{
@@ -53,8 +53,12 @@ public class Servidor {
 
 				DatagramPacket packet = new DatagramPacket(by, by.length);
 				datagramSocket.receive(packet);
+				BroadcastingClient.broadcast(packet.toString(), packet.getAddress());
 				datagramSocket.send(packet);
-				telaConversa.escreveMsg(new String(by));
+				System.out.println("MSG = "+new String(by));
+				System.out.println("pcket.toString() = " packet.toString());
+//				static ControleTelaConversa telaConversa = ;
+//				telaConversa.escreveMsg(new String(by));
 			}
 		} catch (IOException e) {
 			System.err.println("Porta em uso "+e.getMessage());

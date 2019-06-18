@@ -146,5 +146,4 @@ public class ControleTelaConversa implements KeyListener{
 				telaConversa.getTextAreaMensagemEscrita().setText(null);
 				telaConversa.getTextAreaMensagemEscrita().requestFocus();
 	}
-
 }
