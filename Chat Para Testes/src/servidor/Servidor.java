@@ -1,15 +1,12 @@
 package servidor;
 
 import java.io.IOException;
-import java.io.PrintStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
-import inter_face.ControleTelaConversa;
+
 import inter_face.ControleTelaInicial;
 
 //import controle.ControleServidor;
@@ -19,8 +16,12 @@ public class Servidor {
 	private static IPBroadcast IP;
 	private static ServerSocket server;
 	private static DatagramSocket datagramSocket;
-	private static ArrayList<PrintStream> clientes;
 	private static byte[] Byte;
+	private static String mensagem;
+	private static String ip;
+	private static int porta;
+	
+	ArrayList<Servidor> listUsuarios = new ArrayList<Servidor>();
 	
 	public Servidor() {
 //		ServerSocket servidor = null;
@@ -45,18 +46,24 @@ public class Servidor {
 	}
 
 	public static void main(String[] args) {
-
+		new ControleTelaInicial();
+		new BroadcastingClient();
 		try {
 			datagramSocket = new DatagramSocket(5000);
 			while (true) {
 				byte[] by = new byte[255];
-
+				
 				DatagramPacket packet = new DatagramPacket(by, by.length);
 				datagramSocket.receive(packet);
 				BroadcastingClient.broadcast(packet.toString(), packet.getAddress());
 				datagramSocket.send(packet);
-//				System.out.println("MSG = "+new String(by));
-//				System.out.println("pcket.toString() = " + packet.toString());
+				
+				mensagem = new String(by);
+				ip = packet.getAddress().toString();
+				porta = packet.getPort();
+				
+				System.out.println("MSG = "+new String(by));
+				System.out.println("packet.toString() = " + packet.toString());
 //				static ControleTelaConversa telaConversa = ;
 //				telaConversa.escreveMsg(new String(by));
 			}
@@ -65,8 +72,7 @@ public class Servidor {
 			e.printStackTrace();
 		}
 		
-		new ControleTelaInicial();
-		new BroadcastingClient();
+		
 	}
 
 	public static IPBroadcast getIPBroadcast() {
@@ -85,13 +91,7 @@ public class Servidor {
 		Byte = b;
 	}
 
-	public static ArrayList<PrintStream> getClientes() {
-		return clientes;
-	}
-
-	public static void setClientes(ArrayList<PrintStream> clientes) {
-		Servidor.clientes = clientes;
-	}
+	
 
 	public static ServerSocket getServer() {
 		return server;

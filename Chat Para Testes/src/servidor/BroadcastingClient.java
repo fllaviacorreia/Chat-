@@ -36,7 +36,7 @@ public class BroadcastingClient {
 	public static void broadcast(String broadcastMessage, InetAddress address) throws IOException {
 		socket = new DatagramSocket();
 		socket.setBroadcast(true);
-		DatagramPacket packet = new DatagramPacket(broadcastMessage.getBytes(), broadcastMessage.getBytes().length, address, 5000);
+		DatagramPacket packet = new DatagramPacket(broadcastMessage.getBytes(), broadcastMessage.getBytes().length, address, 50001);
 		socket.send(packet);
 		socket.close();
 	}
