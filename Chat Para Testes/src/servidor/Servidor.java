@@ -64,8 +64,6 @@ public class Servidor {
 				
 				System.out.println("MSG = "+new String(by));
 				System.out.println("packet.toString() = " + packet.toString());
-//				static ControleTelaConversa telaConversa = ;
-//				telaConversa.escreveMsg(new String(by));
 			}
 		} catch (IOException e) {
 			System.err.println("Porta em uso "+e.getMessage());
