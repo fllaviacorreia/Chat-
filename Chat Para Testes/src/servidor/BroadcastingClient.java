@@ -16,10 +16,12 @@ public class BroadcastingClient {
 			public void run() {
 				while(true) {
 					try {
-						broadcast("Fernanda", InetAddress.getByName(getIPBroadcast().IP().toString().substring(1, (getIPBroadcast().IP().toString()).length())));
-						Thread.sleep(5000);
+						broadcast("Fernanda", InetAddress.getByName(getIPBroadcast().IP().toString().
+								substring(1, (getIPBroadcast().IP().toString()).length())));
+						Thread.sleep(2000);
 						System.out.println("indo");
-						System.out.println("ip Fernanda = "+InetAddress.getByName(getIPBroadcast().IP().toString().substring(1, (getIPBroadcast().IP().toString()).length())));
+						System.out.println("ip Fernanda = "+InetAddress.getByName(getIPBroadcast().IP().toString().
+								substring(1, (getIPBroadcast().IP().toString()).length())));
 
 					} catch (IOException e) {
 						
@@ -34,9 +36,10 @@ public class BroadcastingClient {
 	}
 
 	public static void broadcast(String broadcastMessage, InetAddress address) throws IOException {
+		byte [] buffer = broadcastMessage.getBytes();
 		socket = new DatagramSocket();
 		socket.setBroadcast(true);
-		DatagramPacket packet = new DatagramPacket(broadcastMessage.getBytes(), broadcastMessage.getBytes().length, address, 50001);
+		DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, 50001);
 		socket.send(packet);
 		socket.close();
 	}

@@ -2,29 +2,37 @@ package inter_face;
 
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
+import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
+import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JSeparator;
 
 public class TelaInicial extends JPanel{
 	private JTextField textFieldBusca;
-	private JLabel labelUsuario;
+	private static JList Usuario;
 	private JSeparator separator;
 	private JSeparator separator_1;
 	private JSeparator separator_2;
 	private JLabel labelSearch;
 	private ImageIcon iconeSearch;
+	
 	public TelaInicial() {
 		setBackground(new Color(245, 255, 250));
 		setLayout(null);
 		add(getTextFieldBusca());
-		add(getLabelUsuario());
 		add(getSeparator());
 		add(getSeparator_1());
 		add(getSeparator_2());
 		add(getLabelSearch());
+		add(getUsuario());
 		
 	}
 	public JTextField getTextFieldBusca() {
@@ -36,13 +44,15 @@ public class TelaInicial extends JPanel{
 		}
 		return textFieldBusca;
 	}
-	public JLabel getLabelUsuario() {
-		if (labelUsuario == null) {
-			labelUsuario = new JLabel("Usuario");
-			labelUsuario.setBounds(10, 100, 396, 31);
+	
+	public JList getUsuario() {
+		if(Usuario == null) {
+			Usuario = new JList<>();
+			Usuario.setBounds(10, 100, 400, 600);
 		}
-		return labelUsuario;
+		return Usuario;
 	}
+	
 	public JSeparator getSeparator() {
 		if (separator == null) {
 			separator = new JSeparator();

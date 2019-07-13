@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import servidor.BroadcastingClient;
@@ -135,6 +136,7 @@ public class ControleTelaConversa implements KeyListener{
 		// TODO Auto-generated method stub
 		
 	}
+	
 	
 	public void escreveMsg(String mensagem) {
 		System.out.println("no método de conversa");
