@@ -25,7 +25,7 @@ public class TelaInicial extends JPanel{
 	private ImageIcon iconeSearch;
 	
 	public TelaInicial() {
-		setBackground(new Color(245, 255, 250));
+		setBackground(Color.white);
 		setLayout(null);
 		add(getTextFieldBusca());
 		add(getSeparator());
@@ -50,7 +50,8 @@ public class TelaInicial extends JPanel{
 			Usuario = new JList<>();
 			Usuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			Usuario.setLayoutOrientation(JList.VERTICAL);
-			Usuario.setBounds(10, 100, 400, 600);
+			Usuario.setFont(new Font("Arial", Font.PLAIN, 16));
+			Usuario.setForeground(Color.BLACK);
 		}
 		return Usuario;
 	}
