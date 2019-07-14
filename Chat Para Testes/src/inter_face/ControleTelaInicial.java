@@ -7,8 +7,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.swing.JList;
-import javax.swing.ListSelectionModel;
+import javax.swing.JOptionPane;
+
 
 public class ControleTelaInicial implements MouseListener{
 	static TelaInicial telaInicial = new TelaInicial();
@@ -18,13 +18,12 @@ public class ControleTelaInicial implements MouseListener{
 	public ControleTelaInicial() {
 		frame.trocarPainel(telaInicial, "Página Inicial");
 		telaInicial.getTextFieldBusca().addMouseListener(this);
+		telaInicial.getUsuario().addMouseListener(this);
 		System.out.println("No controlador da Tela Inicial");
 	}
 	
 	public void addNome(ArrayList<String>nomes) {
 		telaInicial.getUsuario().setListData(nomes.toArray());
-		telaInicial.getUsuario().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		telaInicial.getUsuario().setLayoutOrientation(JList.VERTICAL);
 	}
 
 	@Override
@@ -33,13 +32,13 @@ public class ControleTelaInicial implements MouseListener{
 			telaInicial.getTextFieldBusca().setText(null);
 			telaInicial.getTextFieldBusca().setForeground(Color.BLACK);
 		}
-//		if(e.getSource() == telaInicial.getLabelUsuario()) {
-//			if(telaConversa == null)
-//				telaConversa = new TelaConversa();
+		
+		if(e.getSource() == telaInicial.getUsuario()) {
+			JOptionPane.showMessageDialog(telaInicial, "Bom dia!", "Olá", JOptionPane.INFORMATION_MESSAGE);
 //			new ControleTelaConversa(frame, telaConversa);
 //			telaConversa = null;
-//		}
-//		
+		}
+		
 	}
 
 	@Override

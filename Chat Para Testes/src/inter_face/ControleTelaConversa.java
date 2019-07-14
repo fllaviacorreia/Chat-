@@ -137,7 +137,6 @@ public class ControleTelaConversa implements KeyListener{
 		
 	}
 	
-	
 	public void escreveMsg(String mensagem) {
 		System.out.println("no método de conversa");
 		telaConversa.getTextAreaMensagemEnviada().append(mensagem + "\t             " 

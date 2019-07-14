@@ -48,6 +48,8 @@ public class TelaInicial extends JPanel{
 	public JList getUsuario() {
 		if(Usuario == null) {
 			Usuario = new JList<>();
+			Usuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			Usuario.setLayoutOrientation(JList.VERTICAL);
 			Usuario.setBounds(10, 100, 400, 600);
 		}
 		return Usuario;
