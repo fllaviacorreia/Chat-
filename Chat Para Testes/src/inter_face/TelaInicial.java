@@ -48,10 +48,8 @@ public class TelaInicial extends JPanel{
 	public JList getUsuario() {
 		if(Usuario == null) {
 			Usuario = new JList<>();
-			Usuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			Usuario.setLayoutOrientation(JList.VERTICAL);
-			Usuario.setFont(new Font("Arial", Font.PLAIN, 16));
 			Usuario.setForeground(Color.BLACK);
+			Usuario.setBounds(10, 100, 400, 400);
 		}
 		return Usuario;
 	}

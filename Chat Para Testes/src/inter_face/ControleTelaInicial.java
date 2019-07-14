@@ -7,7 +7,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 
 
 public class ControleTelaInicial implements MouseListener{
@@ -24,6 +26,9 @@ public class ControleTelaInicial implements MouseListener{
 	
 	public void addNome(ArrayList<String>nomes) {
 		telaInicial.getUsuario().setListData(nomes.toArray());
+		telaInicial.getUsuario().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		telaInicial.getUsuario().setLayoutOrientation(JList.VERTICAL);
+		System.out.println("em add nome");
 	}
 
 	@Override
