@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 
 import inter_face.ControleTelaInicial;
@@ -11,34 +12,33 @@ import inter_face.ControleTelaInicial;
 public class Servidor {
 
 	private static IPBroadcast IP;
-	private static ServerSocket server;
+	private static ServerSocket servidor = null;
 	private static DatagramSocket datagramSocket;
 	private static ArrayList<String> contatos;
 	private static String mensagem;
 	private static String ip;
 	private static String eu = "Fernanda";
 	private static ControleTelaInicial controleTelaInicial;
+	private Socket cliente;
 	
 	public Servidor() {
-//		ServerSocket servidor = null;
-//		try{
-//			servidor = new ServerSocket(5001);
-//			System.out.println("[I] - Servidor iniciado na porta 5001");
-//			while(true) {
-//				Socket cliente = servidor.accept(); // o accept é o que espera alguém se conectar
-//				new ControleServidor(cliente);
-//				
-//			}
-//		} catch (IOException e) {
-//			System.err.println("Porta ocupda ou servidor fechado  " + e.getMessage());
-//			try {
-//				if(servidor != null)
-//					servidor.close();
-//			} catch (IOException e1) {
-//				e1.printStackTrace();
-//			}
-//			e.printStackTrace();
-//		}
+		try{
+			servidor = new ServerSocket(5000);
+			System.out.println("[I] - Servidor iniciado na porta 5001");
+			while(true) {
+				cliente = servidor.accept();
+				
+			}
+		} catch (IOException e) {
+			System.err.println("Porta ocupda ou servidor fechado  " + e.getMessage());
+			try {
+				if(servidor != null)
+					servidor.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {

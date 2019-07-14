@@ -83,6 +83,7 @@ public class ControleTelaConversa implements KeyListener{
 			
 		}
 	};
+	
 	public ControleTelaConversa(Frame frame, TelaConversa telaConversa) {
 		ControleTelaConversa.frame = frame;
 		ControleTelaConversa.telaConversa = telaConversa;	
@@ -92,9 +93,8 @@ public class ControleTelaConversa implements KeyListener{
 		ControleTelaConversa.telaConversa.getLabelVoltar().addMouseListener(mouseListener);
 		System.out.println("No Controlador da Tela de Conversa");
 	}
-	public ControleTelaConversa() {
-		
-	}
+	
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
