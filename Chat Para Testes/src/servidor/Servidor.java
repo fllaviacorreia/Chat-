@@ -11,8 +11,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.sun.jndi.cosnaming.IiopUrl.Address;
-
 import inter_face.ControleTelaConversa;
 import inter_face.ControleTelaInicial;
 
@@ -29,15 +27,17 @@ public class Servidor {
 	private static ControleTelaInicial controleTelaInicial;
 	private static Socket cliente;
 	private static int porta = 5001;
+	
 	public Servidor() {
 		try {
 			datagramSocket = new DatagramSocket(porta);
+			String mensagem;
 			while (true) {
 				byte[] by = new byte[15];
 
 				DatagramPacket packet = new DatagramPacket(by, by.length);
 				datagramSocket.receive(packet);
-
+				System.out.println("no métdo servior");
 				mensagem = new String(by, 0, by.length);
 				ControleTelaConversa.escreveMsg(mensagem);
 				System.out.println("MSG = " + mensagem + "TAM MSG = " + mensagem.length());

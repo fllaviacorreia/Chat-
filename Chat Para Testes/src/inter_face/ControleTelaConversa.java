@@ -129,9 +129,11 @@ public class ControleTelaConversa implements KeyListener {
 
 	public static void escreveMsg(String mensagem) {
 		InetAddress ip = null;
+	//	new Servidor();
 		for(int i = 0; i < Servidor.getContatos().size(); i++) {
 			if(Servidor.getContatos().get(i).equals(contato)) {
 				ip = Servidor.getIps().get(i);
+				System.out.println(ip);
 				break;
 			}
 		}
