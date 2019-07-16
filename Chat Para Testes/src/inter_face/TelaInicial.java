@@ -1,6 +1,8 @@
 package inter_face;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -23,7 +26,7 @@ public class TelaInicial extends JPanel{
 	private JSeparator separator_2;
 	private JLabel labelSearch;
 	private ImageIcon iconeSearch;
-	
+	private JScrollPane scrollPaneContatos;
 	public TelaInicial() {
 		setBackground(Color.white);
 		setLayout(null);
@@ -32,9 +35,21 @@ public class TelaInicial extends JPanel{
 		add(getSeparator_1());
 		add(getSeparator_2());
 		add(getLabelSearch());
-		add(getUsuario());
+		add(getScrollPaneContatos());
 		
 	}
+	public JScrollPane getScrollPaneContatos() {
+		if(scrollPaneContatos == null) {
+			scrollPaneContatos = new JScrollPane(getUsuario(), 
+					ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, 
+					ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			scrollPaneContatos.setSize(400, 400);
+			scrollPaneContatos.setLocation(10, 100);
+		
+		}
+		return scrollPaneContatos;
+	}
+	
 	public JTextField getTextFieldBusca() {
 		if (textFieldBusca == null) {
 			textFieldBusca = new JTextField("Buscar por pessoas...");

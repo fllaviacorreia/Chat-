@@ -2,6 +2,8 @@ package inter_face;
 
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.Icon;
@@ -27,6 +29,7 @@ public class TelaConversa extends JPanel {
 	private ImageIcon iconeBack;
 	private ImageIcon iconeSend;
 	private JPanel panel;
+	
 	public TelaConversa() {
 		setBackground(new Color(153, 204, 204));
 		setLayout(null);
@@ -38,9 +41,9 @@ public class TelaConversa extends JPanel {
 	}
 	public JLabel getLabelEnviar() {
 		if (labelEnviar == null) {
-			iconeSend = new ImageIcon("send.png");
-			iconeSend.setImage(iconeSend.getImage().getScaledInstance(60, 50, 100));
-			labelEnviar = new JLabel("Enviar");
+			iconeSend = new ImageIcon("send1.png");
+			iconeSend.setImage(iconeSend.getImage().getScaledInstance(60, 50, 50));
+			labelEnviar = new JLabel();
 			labelEnviar.setHorizontalAlignment(SwingConstants.CENTER);
 			labelEnviar.setIcon(iconeSend);
 			labelEnviar.setBackground(new Color(255, 255, 240));
@@ -52,6 +55,7 @@ public class TelaConversa extends JPanel {
 		if (textAreaMensagemEscrita == null) {
 			textAreaMensagemEscrita = new JTextArea();
 			textAreaMensagemEscrita.setBounds(10, 397, 331, 50);
+			textAreaMensagemEscrita.setFont(new Font("Calibri", Font.PLAIN, 14));
 			textAreaMensagemEscrita.setLineWrap(true);
 		}
 		return textAreaMensagemEscrita;
@@ -60,6 +64,7 @@ public class TelaConversa extends JPanel {
 		if (textAreaMensagemEnviada == null) {
 			textAreaMensagemEnviada = new JTextArea();
 			textAreaMensagemEnviada.setBounds(10, 397, 331, 50);
+			textAreaMensagemEnviada.setFont(new Font("Calibri", Font.PLAIN, 18));
 			textAreaMensagemEnviada.setLineWrap(true);
 			textAreaMensagemEnviada.setEditable(false);
 		}
@@ -88,7 +93,7 @@ public class TelaConversa extends JPanel {
 	public JLabel getLabelVoltar() {
 		if (labelVoltar == null) {
 			iconeBack = new ImageIcon("back1.png");
-			iconeBack.setImage(iconeBack.getImage().getScaledInstance(40, 30, 100));
+			iconeBack.setImage(iconeBack.getImage().getScaledInstance(55, 34, 50));
 			labelVoltar = new JLabel();
 			labelVoltar.setBounds(10, 11, 65, 34);
 			labelVoltar.setIcon(iconeBack);
@@ -98,8 +103,9 @@ public class TelaConversa extends JPanel {
 	}
 	public JLabel getLabelContato() {
 		if (labelContato == null) {
-			labelContato = new JLabel("Contato");
-			labelContato.setBounds(85, 5, 344, 40);
+			labelContato = new JLabel();
+			labelContato.setFont(new Font("Calibri",Font.BOLD, 24));
+			labelContato.setBounds(85, 10, 344, 40);
 		}
 		return labelContato;
 	}
