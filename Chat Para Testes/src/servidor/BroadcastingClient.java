@@ -40,21 +40,21 @@ public class BroadcastingClient {
 		
 	}
 	
-	public static void escreveMsg(String msg, InetAddress address, int porta) throws IOException {
-		byte [] buffer = msg.getBytes();
-		System.out.println("em escreveMsg");
-		socket = new DatagramSocket();
-		socket.setBroadcast(true);
-		DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, porta);
-		socket.send(packet);
-		socket.close();
-	}
+//	public static void escreveMsg(String msg, InetAddress address, int porta) throws IOException {
+//		byte [] buffer = msg.getBytes();
+//		System.out.println("em escreveMsg");
+//		socket = new DatagramSocket();
+//		socket.setBroadcast(true);
+//		DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, porta);
+//		socket.send(packet);
+//		socket.close();
+//	}
 
 	public static void broadcast(String broadcastMessage, InetAddress address) throws IOException {
 		byte [] buffer = broadcastMessage.getBytes();
 		socket = new DatagramSocket();
 		socket.setBroadcast(true);
-		DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, 50001);
+		DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, 6789);
 		socket.send(packet);
 		socket.close();
 	}

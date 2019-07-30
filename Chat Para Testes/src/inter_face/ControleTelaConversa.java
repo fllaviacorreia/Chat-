@@ -144,12 +144,12 @@ public class ControleTelaConversa implements KeyListener {
 			telaConversa.getTextAreaMensagemEnviada()
 					.setCaretPosition(telaConversa.getTextAreaMensagemEnviada().getText().length() - 1);
 		}
-		try {
-			BroadcastingClient.escreveMsg(mensagem, ip , 5001);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//		//	BroadcastingClient.escreveMsg(mensagem, ip , 5001);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		telaConversa.getTextAreaMensagemEscrita().setText(null);
 		telaConversa.getTextAreaMensagemEscrita().requestFocus();
 	}

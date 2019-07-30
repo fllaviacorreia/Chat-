@@ -23,30 +23,30 @@ public class Servidor {
 	private static ArrayList<InetAddress> ips;
 	private static String mensagem;
 	private static InetAddress ip;
-	private static String eu = "Flávia Correia";
+	private static String eu = "Flávia";
 	private static ControleTelaInicial controleTelaInicial;
 	private static Socket cliente;
 	private static int porta = 5001;
 	
 	public Servidor() {
-		try {
-			datagramSocket = new DatagramSocket(porta);
-			String mensagem;
-			while (true) {
-				byte[] by = new byte[15];
-
-				DatagramPacket packet = new DatagramPacket(by, by.length);
-				datagramSocket.receive(packet);
-				System.out.println("no métdo servior");
-				mensagem = new String(by, 0, by.length);
-				ControleTelaConversa.escreveMsg(mensagem);
-				System.out.println("MSG = " + mensagem + "TAM MSG = " + mensagem.length());
-				System.out.println("ip = " + ip);
-			}
-		} catch (IOException e) {
-			System.err.println("Porta em uso " + e.getMessage());
-			e.printStackTrace();
-		}
+//		try {
+//			datagramSocket = new DatagramSocket(porta);
+//			String mensagem;
+//			while (true) {
+//				byte[] by = new byte[15];
+//
+//				DatagramPacket packet = new DatagramPacket(by, by.length);
+//				datagramSocket.receive(packet);
+//				System.out.println("no métdo servior");
+//				mensagem = new String(by, 0, by.length);
+//				ControleTelaConversa.escreveMsg(mensagem);
+//				System.out.println("MSG = " + mensagem + "TAM MSG = " + mensagem.length());
+//				System.out.println("ip = " + ip);
+//			}
+//		} catch (IOException e) {
+//			System.err.println("Porta em uso " + e.getMessage());
+//			e.printStackTrace();
+//		}
 //		try {
 //			System.out.println("[I] - Servidor iniciado na porta 5001");
 //			while (true) {
@@ -70,22 +70,21 @@ public class Servidor {
 	public static void main(String[] args) {
 		new BroadcastingClient();
 		try {
-			datagramSocket = new DatagramSocket(50001);
+			datagramSocket = new DatagramSocket(6789);
 			while (true) {
-				byte[] by = new byte[15];
+				byte[] by = new byte[255];
 
 				DatagramPacket packet = new DatagramPacket(by, by.length);
 				datagramSocket.receive(packet);
 
-				mensagem = new String(by, 0, by.length);
+				mensagem = new String(by);
 				mensagem = mensagem.replace("  ", "");
-				ip = packet.getAddress();
+			//	ip = packet.getAddress();
 
 				if (!mensagem.equals(eu)) {
-
 					getContatos().add(mensagem);
-					getIps().add(ip);
-					getControleTelaInicial().insereNome(getContatos());
+			//		getIps().add(ip);
+					getControleTelaInicial().insere(getContatos());
 				}
 
 				for (int i = 0; i < getContatos().size(); i++) {

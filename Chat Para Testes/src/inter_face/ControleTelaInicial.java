@@ -70,7 +70,7 @@ public class ControleTelaInicial {
 		System.out.println("No controlador da Tela Inicial");
 	}
 	
-	public void insereNome(ArrayList<String>nomes) {
+	public void insere(ArrayList<String>nomes) {
 		telaInicial.getUsuario().setListData(nomes.toArray());
 		telaInicial.getUsuario().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		telaInicial.getUsuario().setLayoutOrientation(JList.VERTICAL);
